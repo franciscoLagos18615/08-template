@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {ngForm} from '@angular/forms';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
-  styles: []
+  styles: [`
+    .ng-invalid.ng-touched:not(form){
+      border: 1px solid red;
+    }
+
+  `
+  ]
 })
 export class TemplateComponent implements OnInit {
 
   usuario: Object = {
 
-    nombre: "fernando",
-    apellido: "lagos",
-    correo: ""
+    nombre: null,
+    apellido: null,
+    correo: null
   };
 
   constructor() { }
@@ -20,7 +26,7 @@ export class TemplateComponent implements OnInit {
   ngOnInit() {
   }
 
-  guardar(forma: ngForm){
+  guardar(forma: NgForm){
 
     console.log("ngform",forma);
     console.log("valor forma",forma.value);
