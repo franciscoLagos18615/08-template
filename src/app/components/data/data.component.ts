@@ -16,9 +16,9 @@ export class DataComponent  {
 
     nombrecompleto:{
       nombre:"fernando",
-      apellido:"gerrera"
+      apellido:"herrera"
     },
-    correo: "fern.@gmail.com"
+    correo: "fern.@gmail.com",
     pasatiempos:["correr","dormir","comer"]
   };
 
@@ -26,7 +26,7 @@ export class DataComponent  {
   constructor() {
       this.forma = new FormGroup({
         'nombre': new FormControl('',[Validators.required,Validators.minLength(3)]),
-        'apellido': new FormControl('',Validators.required),
+        'apellido': new FormControl('',[Validators.required, this.noHerrera]),
         'correo': new FormControl('', [
           Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
 
@@ -35,14 +35,23 @@ export class DataComponent  {
           ])
 
       });
-      //this.forma.setValue(this.usuario);
+
    }
+
+
 
 agregarPasatiempo(){
 ( <FormArray> this.forma.controls['pasatiempos']).push(
   new FormControl('', Validators.required)
 )
 )}
+
+noHerrera(control:FormControl): any{
+  if(control.value=== "herrera"){
+    return {noherrera: true }
+  }
+  return null;
+}
 
 guardarCambios() {
   console.log(this.forma.value);
