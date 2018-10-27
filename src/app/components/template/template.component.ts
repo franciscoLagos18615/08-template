@@ -18,8 +18,22 @@ export class TemplateComponent implements OnInit {
 
     nombre: null,
     apellido: null,
-    correo: null
+    correo: null,
+    pais: "",
+    sexo: "Hombre",
+    acepta: false
   };
+
+  paises = [{
+    codigo: "cri",
+    nombre: "costa rica"},
+    {
+    codigo: "esp",
+    nombre: "españa"
+
+  }];
+
+  sexos: string[] = ["Hombre","Mujer","sin definir"]
 
   constructor() { }
 
