@@ -45,6 +45,18 @@ export class DataComponent  {
         Validators.required,
         this.noIgual.bind( this.forma )
       ]);
+      //observador que este pendiente de los cambios
+      this.forma.controls['username'].valueChanges
+      .subscribe(data =>{
+        console.log(data);
+      });
+
+      //status del control
+      this.forma.controls['username'].statusChanges
+      .subscribe(data =>{
+        console.log(data);
+      });
+
 
    }
 
